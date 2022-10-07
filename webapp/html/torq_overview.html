@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="../css/app.css">
+
+<body class="content-body">
+
+    <div class="content-div">
+    <h2>TorQ Overview</h2>
+	</div>
+
+    <div class="content-div">
+        <h3 id="contents-h">Contents</h3>
+        <div id="contents"></div>
+    </div>
+
+	<div class="content-div">
+		<h3>TorQ</h3>
+		<p>
+			TorQ is AquaQ's own tick system, in devops, we also use the Financial Starter Pack
+			(FSP), which adds a 'fake' datafeed to simulate a data stream which we can use to
+			measure the health of the system and test new features we are adding.
+			<br>
+			<br>
+			A useful cheatsheet, and other documentation, can be found <a href="http://aquaqanalytics.github.io/TorQ/cheatsheet/">here</a>.
+		</p>
+
+	</div>
+
+    <div class="content-div">
+	<h3>Code</h3>
+	<p>
+	The <code class="inline">code</code> directory is used to hold all the code that is used when processes are started up.
+	The main subdirectories here are:
+	<ul>
+		<li>
+			common
+			<ul>
+				<li>Contains code for basic utilities which are used by all processes</li>
+			</ul>
+		</li>
+		<li>
+			processes
+			<ul>
+				<li>Contains code loaded by specfic processes (file name = proctype)</li>
+			</ul>
+		</li>
+		<li>
+			directories named after specific processes
+			<ul>
+				<li>Contains additional code to be loaded by that process</li>
+				<li>e.g. <code class="inline">code/rdb</code></li>
+			</ul>
+		</li>
+	</ul>
+	</p>
+	</div>
+
+    <div class="content-div">
+	<h3>Config</h3>
+	<p>
+		The <code class="inline">config</code> directory contains configuration for processes.
+
+		<ul>
+			<li>
+				settings
+				<ul>
+					<li>Directory which holds files which can be used to overwrite default variables</li>
+					<li>Each file name represents the process type for which the variables will be overwritten</li>
+				</ul>
+			</li>
+			<li>
+				process.csv
+				<ul>
+					<li>Contains the processes which will be used in your stack, this is used by the `torq.sh` script.</li>
+				</ul>
+			</li>
+		</ul>
+	</p>
+	</div>
+
+    <div class="content-div">
+	<h3>Logs</h3>
+	<p>
+		The <code class="inline">logs</code> directory contains three types of logs for each individual processes.
+		<br>
+		Logs are rolled over daily, with a symlink to the most recent log file.
+	</p>
+
+	There are three types of logs written out by each process:
+	<table>
+		<tr>
+			<th>Log</th>
+			<th>Description</th>
+		</tr>
+		<tr>
+			<td>out</td>
+			<td>an out log (<code class="inline">out_*</code>) with standard log messages</td>
+		</tr>
+		<tr>
+			<td>err</td>
+			<td>an error log file (<code class="inline">err_*</code>) with errors</td>
+		</tr>
+		<tr>
+			<td>usage</td>
+			<td>a usage log file (<code class="inline">usage_*</code>) with a log of every request that hits the process</td>
+		</tr>
+	</table>
+	<br>
+	Getting used to these log files is important, and using <code class="inline">grep</code> is very handy with these.
+    </div>
+
+    <div class="content-div">
+	<h3>Tests</h3>
+	<p>
+		The <code class="inline">tests</code> directory contains the <code class="inline" >k4unit</code> code which is used with our unit tests.
+		Documentation can be found <a href="http://aquaqanalytics.github.io/TorQ/unittesting/">here</a>.
+		<br>
+		<br>
+		There are multiple ways to run the unit tests, but we recommend using a directory
+		within <code class="inline">tests</code> for your tests.
+		<br>
+		<br>
+		This should contain at least four files which are:
+		<ul>
+			<li>
+				<code class="inline">process.csv</code>
+				<ul>
+					<li>This is the same as the <code class="inline">process.csv</code> for the main stack, but should 
+						only include processes necessary for your tests.</li>
+					<li>Make sure to change the base ports for your processes so they don't 
+						conflict with your already running processes.</li>
+				</ul>
+			</li>
+			<li>
+				<code class="inline">settings.q</code>
+				<ul>
+					<li>Use this to define certain variables, such as connection details, and 
+						variables necessary for your tests.</li>
+				</ul>
+			</li>
+			<li>
+				<code class="inline">tests.csv</code>
+				<ul>
+					<li>This csv will provide the tests to run in your tests process. More 
+						info can be found in the documentation.</li>
+				</ul>
+			</li>
+			<li>
+				<code class="inline">run.sh</code>
+				<ul>
+					<li>This script will run all that is necessary for the tests to run</li>
+					<li>It will:
+						<ol>
+							<li>Start up the processes in the <code class="inline">process.csv</code></li>
+							<li>Load the variables defined in the <code class="inline">settings.q</code></li>
+							<li>Run the tests defined in the <code class="inline">tests.csv</code></li>
+							<li>Shut down the processes in <code class="inline">process.csv</code> once the tests have completed.</li>
+						</ol>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</p>
+	</div>
+	<script src="../js/common.js"></script>
+</body>

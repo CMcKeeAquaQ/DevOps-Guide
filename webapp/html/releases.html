@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="../css/app.css">
+
+<body class="content-body">
+
+    <div class="content-div">
+    <h2>Releases</h2>
+	</div>
+
+    <div class="content-div">
+        <h3 id="contents-h">Contents</h3>
+        <div id="contents"></div>
+    </div>
+
+    <div class="content-div">
+        <h3>Creating tags</h3>
+        <p>
+            Once all the code to be in the new release has been merged, you can start with 
+            setting up a new tag.
+            <br>
+            This is done by going to the GitHub repository.
+            <br>
+            <br>
+            <img src="../assets/releases.png" alt="Releases section on GitHub's code tab">
+            <br>
+            When on the code tab, select <code class="inline">Releases</code> on the right-hand 
+            side of the page. This will show all the releases that have been done so far. From 
+            here click on <code class="inline">Draft a new release</code>. This will take you to 
+            a page where you can create a new release.
+            <br>
+            <br>
+            <img src="../assets/filledRelease.png" alt="Filled out release ready for publishing on GitHub">
+            <br>
+            <ol>
+                <li>Under <code class="inline">Choose a tag</code>, create a new tag by incrementing on the 
+                    previous version, using <a href="https://semver.org/">semantic versioning</a>.</li>
+                <li>Name the <code class="inline">Release title</code> the same as the new version tag.</li>
+                <li>The description should be a list of bullet points of what has been changed from 
+                    the last tag. This can be done automatically by clicking on 
+                    <code class="inline">Generate release notes</code>.</li>
+                <li>After this is complete click on <code class="inline">Publish Release</code>.</li>
+            </ol>
+        </p>
+    </div>
+
+    <div class="content-div">
+        <h3>Settting up the folder structure</h3>
+        <p>
+<pre><code class="block">current structure
+├── data
+│   ├── logs
+│   └── tplogs
+│       └── stp1_2021.09.20
+├── deploy -> /home/devops1/releases/deploy/v3.6.0_v1.8.0/
+├── releases
+    ├── deploy
+    │   ├── v3.5.0_v1.7.0
+    │   └── v3.6.0_v1.8.0
+    ├── TorQ
+    │   ├── v3.5.0
+    │   └── v3.6.0
+    └── TorQ-FSP
+        ├── v1.7.0
+        └── v1.8.0</code></pre>
+        </p>
+    </div>
+
+<div class="content-div">
+<h3>First time set up</h3>
+<p>
+To the devops folder, add a directory called <code class="inline">releases</code>. In this new directory
+add folders for both TorQ and TorQ-FSP. 
+You will need to create version folders too, for the existing folders on the top level and
+then copy these files over.
+</p>
+</div>
+
+<div class="content-div">
+<h3>Clone the tag</h3>
+<p>
+Create a new directory named the tag version, then use:
+<pre><code class="block">git clone --branch &lttag name&gt &ltrepo url&gt</repo></code></pre>
+</p>
+</div>
+
+<div class="content-div">
+<h3>Create new deploy</h3>
+<p>
+Once the new tag is there for both repos, then create a new directory in
+<code class="inline">releases/deploy</code> named after a combination of the two repo versions. Then
+copy over the two repos, remembering to start with base TorQ first and then FSP
+over the top.
+
+<pre><code class="block">cp -r path-to-repo path-to-deploy</code></pre>
+</p>
+</div>
+
+<div class="content-div">
+<h3>Create sym link on top level</h3>
+<pre><code class="block">ln -s folder-to-link sym-link-folder</code></pre>
+<p>
+To change where the sym link points too
+<pre><code class="block">ln -sfn path-to-new-folder sym-link-folder</code></pre>
+</p>
+</div>
+    <script src="../js/common.js"></script>
+</body>
+
+

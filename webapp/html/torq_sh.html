@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="../css/app.css">
+
+<body class="content-body">
+
+    <div class="content-div">
+        <h2>torq.sh</h2>
+    </div>
+
+    <div class="content-div">
+        <h3 id="contents-h">Contents</h3>
+        <div id="contents"></div>
+    </div>
+
+    <div class="content-div">
+
+        <h3>start</h3>
+        <p>
+            This command is used to start processes in your stack.
+            <br>
+            <code class="inline">start</code> can be used with a single process, multiple named processes,
+            or can be used with <code class="inline">all</code>.
+
+            <h4>Example</h4>
+        <pre><code class="block">./torq.sh start rdb1</code></pre>
+        <p>
+            OR
+        <pre><code class="block">./torq.sh start stp1 rdb1 wdb1 hdb1</code></pre>
+        <p>
+            OR
+        <pre><code class="block">./torq.sh start all</code></pre>
+        </p>
+    </div>
+    <div class="content-div">
+        <h3>summary</h3>
+        <p>
+            This command will show the current condition of the processes within your stack.
+            <br>
+            Information included is the time each process was started, the process name, status (up/down),
+            the process id (PID), and the port each process is listening on.
+
+        <h4>Example</h4>
+        <pre><code class="block">./torq.sh summary</code></pre>
+        <h4>Output</h4>
+        <pre><code class="block">TIME     | PROCESS        | STATUS | PID    | PORT
+12:16:44 | discovery1     | up     | 15010  | 5101
+12:16:44 | tickerplant1   | up     | 15105  | 5100
+12:16:45 | rdb1           | up     | 15196  | 5102
+12:16:45 | hdb1           | up     | 15292  | 5103
+12:16:45 | hdb2           | up     | 15385  | 5104
+12:16:45 | wdb1           | up     | 15477  | 5105
+12:16:45 | sort1          | up     | 15575  | 5106
+12:16:45 | gateway1       | up     | 15668  | 5107
+12:16:45 | killtick       | down   |
+12:16:46 | monitor1       | up     | 15762  | 5109
+12:16:46 | tpreplay1      | down   |
+12:16:46 | housekeeping1  | up     | 15861  | 5111
+12:16:46 | reporter1      | up     | 15957  | 5112
+12:16:46 | compression1   | down   |
+12:16:46 | feed1          | up     | 16151  | 5114
+12:16:46 | chainedtp1     | up     | 16246  | 5115
+12:16:46 | sortslave1     | up     | 16354  | 5116
+12:16:47 | sortslave2     | up     | 16453  | 5117
+12:16:47 | metrics1       | up     | 16554  | 5118
+12:16:47 | iexfeed1       | up     | 16648  | 5119</code></pre>
+        <p>
+        There are three process which do no need to be up all the time:
+        <ul>
+            <li>killtick</li>
+            <li>tpreplay1</li>
+            <li>compression1</li>
+        </ul>
+        </p>
+    </div>
+
+    <div class="content-div">
+        <h3>stop</h3>
+        <p>
+            This command is used to stop processes in your stack.
+            <br>
+            Similar to <code class="inline">start</code>, this command can be used with a single process,
+            multiple named processes, or can be used with <code class="inline">all</code>.
+
+            <h4>Example</h4>
+            <pre><code class="block">./torq.sh stop rdb1</code></pre>
+        <p>
+            OR
+            <pre><code class="block">./torq.sh stop stp1 rdb1 wdb1 hdb1</code></pre>
+        <p>
+            OR
+            <pre><code class="block">./torq.sh stop all</code></pre>
+        </p>
+    </div>
+
+    <div class="content-div">
+        <h3>restart</h3>
+        <p>
+            This will restart processes in your stack.
+            <br>
+            Again, can be used with single, muliple or <code class="inline">all</code> processes.
+
+            <h4>Example</h4>
+            <pre><code class="block">./torq.sh restart rdb1</code></pre>
+        <p>
+            OR
+            <pre><code class="block">./torq.sh restart stp1 rdb1 wdb1 hdb1</code></pre>
+        <p>
+            OR
+            <pre><code class="block">./torq.sh restart all</code></pre>
+        </p>
+    </div>
+
+    <div class="content-div">
+        <h3>debug</h3>
+        <p>
+            The <code class="inline">debug</code> command will run a process interactively.
+            <br>
+            This is useful if you are having trouble starting a process, as it can
+            help to find the problem.
+            <br>
+            Make sure the process in the stack is down before using this!
+
+        <h4>Example</h4>
+
+        <pre><code class="block">./torq.sh debug stp1</code></pre>
+        </p>
+    </div>
+
+    <div class="content-div">
+        <h3>print</h3>
+        <p>
+            This is used to print the start line for the process.
+        </p>
+        <h4>Example</h4>
+        <pre><code class="block">./torq.sh print rdb1</code></pre>
+        <h4>Output</h4>
+        <pre><code class="block">nohup q /home/user/torq/deploy/torq.q -stackid 26400 -proctype rdb -procname rdb1 -U /home/user/torq/deploy/appconfig/passwords/accesslist.txt -localtime 1 -g 1 -T 180 -load /home/user/torq/deploy/code/processes/rdb.q  -procfile /home/user/torq/deploy/appconfig/process.csv  &lt/dev/null &gt/home/user/torq/deploy/logs/torqrdb1.txt 2&gt&1 &</code></pre>
+        <p>
+        The <code class="inline">nohup</code> and the <code
+            class="inline">&lt/dev/null &gt/home/user/torq/deploy/logs/torqrdb1.txt 2&gt&1 &</code>
+        parts are what lets the process run in the background.
+        <br><br>
+        These can be removed to allow the process to run in the foreground.
+        <br>
+        <br>
+        Thus, the command to be used would be:
+        <pre><code class="block">q /home/user/torq/deploy/torq.q -stackid 26400 -proctype rdb -procname rdb1 -U /home/user/torq/deploy/appconfig/passwords/accesslist.txt -localtime 1 -g 1 -T 180 -load /home/user/torq/deploy/code/processes/rdb.q  -procfile /home/user/torq/deploy/appconfig/process.csv</code></pre>
+        <p>
+        An explanation of the flags used:
+        <table>
+            <tr>
+                <th>Flag</th>
+                <th>Explanation</th>
+            </tr>
+            <tr>
+                <td>stackid</td>
+                <td>This is the id of the stack in your setenv.sh file (i.e. the base port)</td>
+            </tr>
+            <tr>
+                <td>proctype</td>
+                <td>The name of the process specified in the process.csv file</td>
+            </tr>
+            <tr>
+                <td>procname</td>
+                <td>The name of the process specified in the process.csv file</td>
+            </tr>
+            <tr>
+                <td>U</td>
+                <td>Authentication requiring a usr:pwd file</td>
+            </tr>
+            <tr>
+                <td>localtime</td>
+                <td>Sets process running in local time rather than GMT</td>
+            </tr>
+            <tr>
+                <td>g</td>
+                <td>Garbage collection immediate (1) or deferred (0)</td>
+            </tr>
+            <tr>
+                <td>T</td>
+                <td>Timeout in seconds for client queries, 0 for no timeout</td>
+            </tr>
+            <tr>
+                <td>load</td>
+                <td>Files or database directory to load</td>
+            </tr>
+            <tr>
+                <td>procfile</td>
+                <td>The csv file to load for process configuration in the stack</td>
+            </tr>
+        </table>
+        <br>
+        For the process to get its port from procress.csv, make sure to source the
+        setenv file before running the start line command.
+        <br>
+        <br>
+        If you are using the above to debug, you may wish to include additional flags:
+        <table>
+            <tr>
+                <th>Flags</th>
+                <th>Explanation</th>
+            </tr>
+            <tr>
+                <td>trap</td>
+                <td>Any errors encountered during initialisation when loading external
+                    files will be caught and logged, processing will continue</td>
+            </tr>
+            <tr>
+                <td>stop</td>
+                <td>Stop loading the file if an error is encountered but do not exit</td>
+            </tr>
+            <tr>
+                <td>noredirect</td>
+                <td>Do not redirect std out/std err to a file</td>
+            </tr>
+            <tr>
+                <td>nopi</td>
+                <td>Reset the definition of <code class="inline">.z.pi</code> to the initial value</td>
+            </tr>
+            <tr>
+                <td>debug</td>
+                <td>Equivalent to [-nopi -noredirect]</td>
+            </tr>
+        </table>
+        </p>
+    </div>
+
+    <script src="../js/common.js"></script>
+</body>

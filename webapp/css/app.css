@@ -1,0 +1,277 @@
+
+:root{
+  --color1: #1B262C;
+  --color2: #0F4C75;
+  --color3: #8fcaf1;
+  --color4: #BBE1FA;
+  --color5: #FFFFFF;
+  --color6: #000000;
+  --color7: #ff8c00;
+}
+
+html, body {
+  margin: 0;
+  font-size: 18px;
+  font-family: Arial, Helvetica, sans-serif;
+  height: 100%;
+  width: 100%;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  background-color:var(--color1);
+  color:var(--color5);
+  padding: 5px;
+  text-align: center;
+  flex:0 1 auto;
+}
+
+.header-image {
+  display:block;
+  position:absolute;
+  width:25%;
+  max-width:200px;
+}
+
+/* Style the navbar */
+.navbar {
+  overflow: hidden;
+  background-color: var(--color1);
+  flex:1 0 auto;
+}
+
+/* Navbar links */
+.navbar button {
+  background-color: var(--color1);
+  color:var(--color5);
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  border: none;
+}
+
+.navbar button:hover {
+  background-color: var(--color4);
+  color: var(--color6);
+}
+
+.navbar button.active {
+  background-color: var(--color2);
+  color: var(--color5);
+}
+
+.navbtn {
+  float:left;
+  display:block;
+}
+
+/* The subnavigation menu */
+.subnav {
+  float: left;
+  overflow: hidden;
+  border: none;
+}
+
+/* Subnav button */
+.subnav .subnavbtn {
+  outline: none;
+  margin: 0;
+}
+
+.subnav-content {
+  display: none;
+  position: absolute;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.subnav-content button {
+  width:100%;
+  float:none;
+  display:block;
+  text-align:left;
+}
+
+/* When you move the mouse over the subnav container, open the subnav content */
+.subnav:hover .subnav-content {
+  display: block;
+}
+
+.content {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: var(--color1);
+  color:var(--color5);
+}
+
+.collapsible {
+  background-color: var(--color2);
+  color: var(--color5);
+  cursor: pointer;
+  position:relative;
+  width:100%;
+  padding: 20px;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
+.collapsible:hover {
+  background-color: var(--color4);
+  color:var(--color6) ;
+}
+
+.display {
+  width: 100vw;
+  height: 100vh;
+}
+
+pre {
+  white-space: pre-wrap; 
+}
+
+pre code,
+pre .line-number {
+  font:normal normal 17px/17px "Courier New",Courier,Monospace;
+  color:var(--color6);
+  display:block;
+}
+
+pre .line-number {
+  float:left;
+  margin:0 1em 0 -1em;
+  border-right:1px solid;
+  text-align:right;
+}
+
+pre .line-number span {
+  display:block;
+  padding:0 .5em 0 1em;
+}
+
+pre .cl {
+  display:block;
+  clear:both;
+}
+
+#container {
+  height: 100%;
+  padding: 5px;
+  flex:2 1 auto;
+  background-color: var(--color4);
+}
+
+#div-content {
+  height:100%;
+  width:100%;
+}
+
+.content-div {
+  background-color: var(--color3);
+  margin: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+h2 {
+  background-color: var(--color2);
+  color: var(--color5);
+  padding:10px;
+  border-radius: 5px;
+}
+
+h3 {
+  background-color: var(--color2);
+  color: var(--color5);
+  padding:10px;
+  margin:0px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+h4 {
+  padding:10px;
+}
+
+p {
+  padding:10px;
+}
+
+.inline {
+  color: var(--color7);
+  background-color: var(--color1);
+  padding-left: 5px;
+  padding-right: 5px;
+  border-radius: 5px;
+}
+
+.block {
+  background-color: var(--color1);
+  color: var(--color5);
+  margin: 20px;
+  padding: 15px;
+  border-radius: 5px;
+  width:fit-content;
+}
+
+table {
+  border-collapse: separate;
+  border-spacing: 0px;
+  font-family: inherit;
+  margin: 10px;
+}
+
+td, th {
+  border: 1px solid var(--color2);
+  padding: 8px;
+}
+
+tr:nth-child(even){background-color: var(--color4);}
+
+tr:hover {
+  background-color: var(--color2);
+  color:var(--color5);
+}
+
+th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: var(--color1);
+  color: var(--color5);
+}
+
+th:first-of-type {
+  border-top-left-radius: 5px;
+}
+th:last-of-type {
+  border-top-right-radius: 5px;
+}
+tr:last-of-type td:first-of-type {
+  border-bottom-left-radius: 5px;
+}
+tr:last-of-type td:last-of-type {
+  border-bottom-right-radius: 5px;
+}
+
+#contents {
+  padding: 10px;
+  font-family: inherit;
+}
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width:80%;
+  max-height:80%;
+  object-fit: contain;
+}

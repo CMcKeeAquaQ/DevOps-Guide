@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/app.css">
+<html>
+  <head>
+    <title>DevOps Guide</title>
+    <link rel="icon" type="image/png" href="assets/AQ-thumb.png">
+  </head>
+  <body class="box">
+    <div class="header">
+        <img src="assets/AQ-white.png" class="header-image" alt="AquaQ logo in white">
+        <h1>DevOps Guide</h1>
+    </div>
+      
+    <div class="navbar">
+      <!-- id is equal to the page name-->
+      <button class="navbtn" onclick="toggleActive(this)" id="introduction">Introduction</button>      
+      <button class="navbtn" onclick="toggleActive(this)" id="communication">Communication</button>
+      <button class="navbtn" onclick="toggleActive(this)" id="github">GitHub</button>
+      <button class="navbtn" onclick="toggleActive(this)" id="git">Git</button>
+      <div class="subnav">
+        <button class="subnavbtn" id="torq">TorQ <i class="fa fa-caret-down"></i></button>
+        <div class="subnav-content">
+          <button onclick="toggleActive(this)" id="torq_overview">TorQ Overview</button>
+          <button onclick="toggleActive(this)" id="setting_up">Setting Up</button>
+          <button onclick="toggleActive(this)" id="torq_sh">torq.sh</button>
+        </div>
+      </div>
+      <button class="navbtn" onclick="toggleActive(this)" id="releases">Releases</button>
+      
+    </div>
+
+    <div id="container"></div>
+
+    <script src="js/app.js"></script>
+
+  </body>
+</html>

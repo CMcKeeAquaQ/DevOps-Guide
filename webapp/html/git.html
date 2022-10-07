@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="../css/app.css">
+
+<body class="content-body">
+
+    <div class="content-div">
+        <h2>Git</h2>
+    </div>
+
+    <div class="content-div">
+        <h3 id="contents-h">Contents</h3>
+        <div id="contents"></div>
+    </div>
+    
+    <div class="content-div">
+        <h3>Branches</h3>
+        <p>
+            Branches are used to develop new features or changes to the repo without affecting
+            the <code class="inline">master/main</code> branch.
+            <br>
+            <br>
+            You should NEVER commit to the <code class="inline">master</code> branch.
+            <br>
+            All changes should be made through other branches.
+            <br>
+            <br>
+            Branch names should not be named after the author, but should describe the feature 
+            or change being made.
+        </p>
+    </div>
+
+    <div class="content-div">
+        <h3>Commit messages</h3>
+        Commit messages should:
+        <ul>
+            <li>Be descriptive of the change being made</li>
+            <li>Be no longer than 50 characters</li>
+            <li>Have the first letter capitalised</li>
+            <li>Use the imperative case</li>
+            <li>e.g. "Update CODEOWNERS to include new DevOps members"</li>
+            <li>See more information <a href="https://chris.beams.io/posts/git-commit/">here</a></li>
+        </ul>
+    </div>
+
+    <div class="content-div">
+        <h3>Useful Git commands</h3>
+        <table>
+            <tr>
+                <th>Command</th>
+                <th>Description</th>
+                <th>Example</th>
+            </tr>
+            <tr>
+                <td>clone</td>
+                <td>Clones a repository to your current directory</td>
+                <td><code class="inline">git clone https://github.com/AquaQAnalytics/devops1-TorQ</code></td>
+            </tr>
+            <tr>
+                <td>branch</td>
+                <td>Show which branch you are on and which branches are in your workspace</td>
+                <td><code class="inline">git branch</code></td>
+            </tr>
+            <tr>
+                <td>checkout</td>
+                <td>Changes which branch you are</td>
+                <td><code class="inline">git checkout eodsummary</code></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>Can be used to create a new branch</td>
+                <td><code class="inline">git checkout -b newbranch</code></td>
+            </tr>
+            <tr>
+                <td>pull</td>
+                <td>Pulls updates for the branch you are requesting (or main if not specified)
+                    from the remote repository to your local repository</td>
+                <td><code class="inline">git pull origin eodsummary</code></td>
+            </tr>
+            <tr>
+                <td>status</td>
+                <td>Shows the status of the working directory and staging area</td>
+                <td><code class="inline">git status</code></td>
+            </tr>
+            <tr>
+                <td>add</td>
+                <td>Adds files you have changed to the staging area so they are ready for a commit</td>
+                <td><code class="inline">git add --all</code></td>
+            </tr>
+            <tr>
+                <td>commit</td>
+                <td>Commits the changes you have made and added to the staging area to your
+                    local repository</td>
+                <td><code class="inline">git commit -m "Add end of day summary functions to rdb.q"</code></td>
+            </tr>
+            <tr>
+                <td>push</td>
+                <td>Pushes any changes you have commited from your local repository to the
+                    remote (online) repository</td>
+                <td><code class="inline">git push origin eodsummary</code></td>
+            </tr>
+            <tr>
+                <td>diff</td>
+                <td>Shows changes between current working branch, and your last commit</td>
+                <td><code class="inline">git diff</code></td>
+            </tr>
+        </table>
+        <p>
+            More commands can be found on this <a href="https://www.atlassian.com/dam/jcr:e7e22f25-bba2-4ef1-a197-53f46b6df4a5/SWTM-2088_Atlassian-Git-Cheatsheet.pdf">cheatsheet</a>
+        </p>
+    </div>
+    <script src="../js/common.js"></script>
+</body>

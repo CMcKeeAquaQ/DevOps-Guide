@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="../css/app.css">
+
+<body class="content-body">
+
+  <div class="content-div">
+    <h2>Introduction</h2>
+  </div>
+  
+  <div class="content-div">
+    <h3 id="contents-h">Contents</h3>
+    <div id="contents"></div>
+  </div>
+
+  <div class="content-div">
+    <h3>Overview</h3>
+    <p>
+      DevOps is a simulated client production system.
+      <br>It will consist of maintaining a TorQ stack and answering client queries, as well as developing new additional
+      features.
+      <br>Work as a team - work together on issues and requirements.
+      <br>Main priority unless told otherwise.
+    </p>
+  </div>
+
+  <div class="content-div">
+    <h3>Development</h3>
+    <h4>Software Development Life Cycle (SDLC)</h4>
+    <ul>
+      <li>Planning/Analysis:
+        <ul>
+          <li>Create issues and project boards on GitHub</li>
+          <li>Assign who will be taking on each issue</li>
+        </ul>
+      </li>
+      <li>Design/Implementation/Testing:
+        <ul>
+          <li>Develop tasks, including unit tests</li>
+          <li>Use git as version control on development environment: create one branch per feature and commit all
+            modifications (early and often!)</li>
+        </ul>
+      </li>
+      <li>Maintenance:
+        <ul>
+          <li>Add or update documentation where applicable</li>
+          <li>Use git as version control on development environment: create one branch per feature and commit all
+            modifications (early and often!)</li>
+        </ul>
+      </li>
+      <li>Open a Pull Request (PR) on GitHub and let colleagues/codeowners review:
+        <ul>
+          <li>PRs are a place for discussion of code</li>
+          <li>Modify code as required by PR reviews and comments</li>
+          <li>Merge PR to master branch once approvals from codeowners are given</li>
+          <li>NB: Teammates should review each other's code</li>
+        </ul>
+      </li>
+      <li>Carry out a release procedure:
+        <ul>
+          <li>Bring down environment</li>
+          <li>Tag release and update code in production environment</li>
+          <li>Start environment up</li>
+          <li>Run checks to ensure system stability</li>
+        </ul>
+      </li>
+    </ul>
+    <p></p>
+  </div>
+
+  <div class="content-div">
+    <h3>Operations</h3>
+    <p>
+      In terms of operations, there are several important factors:
+    <ol>
+      <li>Support</li>
+      <li>Monitoring</li>
+      <li>Handling Bugs</li>
+    </ol>
+    <h4>Objectives</h4>
+    <ul>
+      <li>Handling support queries in a quick/efficient and polite manner</li>
+      <li>Morning monitoring checks of system, ensuring everything is up and running, etc.
+        <ul>
+          <li>Good to spot problems before clients</li>
+        </ul>
+      </li>
+      <li>Fix a bug that crops up in a quick/efficient manner
+        <ul>
+          <li>Notify clients of error and explain system will be down temporarily while implementing fix</li>
+        </ul>
+      </li>
+      <li>Understanding the implications of bouncing a process - feeds go down</li>
+      <li>Understanding implications of performing upgrades and version changes of software</li>
+      <li>Understanding how to manage and perform roll backs of code</li>
+      <li>Debugging: check logs when something is broken to see if you can find error</li>
+    </ul>
+    </p>
+  </div>
+
+  <div class="content-div">
+    <h3>Environments</h3>
+    <ul>
+      <li>Production (Prod)
+        <ul>
+          <li>In the devops1 home directory</li>
+          <li>Data availability here is essential</li>
+          <li>Should only be updated with releases</li>
+          <li>Monitor functionality every morning</li>
+        </ul>
+      </li>
+      <li>Development (Dev)
+        <ul>
+          <li>Your personal stack for developing new features</li>
+          <li>May be set up in your personal home directory</li>
+          <li>Does not need to have the same structure as Prod</li>
+        </ul>
+      </li>
+    </ul>
+    <p></p>
+  </div>
+
+  <div class="content-div">
+    <h3>FAQ</h3>
+    <button type="button" class="collapsible">Open me<i style="float:right">+</i></button>
+    <div class="content">
+      <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque
+        et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus
+        repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
+    </div>
+  </div>
+
+  <script src="../js/common.js"></script>
+
+</body>

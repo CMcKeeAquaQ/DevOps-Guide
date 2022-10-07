@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="../css/app.css">
+
+<body class="content-body">
+
+    <div class="content-div">
+        <h2>Setting Up</h2>
+    </div>
+
+    <div class="content-div">
+        <h3 id="contents-h">Contents</h3>
+        <div id="contents"></div>
+    </div>
+
+    <div class="content-div">
+
+        <h3>Production</h3>
+        <h4>File Structure</h4>
+        <p>
+            The file structure of the production stack should be like so:
+        <pre><code class="block">.
+├── data
+│   ├── dqe
+│   │   ├── dqcdb
+│   │   └── dqedb
+│   ├── hdb
+│   ├── logs
+│   ├── tplogs
+│   └── wdbhdb
+├── deploy -> /home/devops1/releases/deploy/v4.1.1_v1.11.0/
+└── releases
+    ├── deploy
+    │   └── v4.1.1_v1.11.0
+    ├── devops-TorQ
+    │   └── v4.1.1
+    └── devops-TorQ-FSP
+        └── v1.11.0</code></pre>
+
+        <h4>Make the directories</h4>
+        <p>
+            For the release directories:
+        <pre><code class="block">mkdir releases
+mkdir releases/Torq
+mkdir releases/Torq-FPS</code></pre>
+
+        <p>
+            For the data directory
+        <pre><code class="block">mkdir data
+mkdir data/logs
+mkdir -p data/dqe/dqcdb
+mkdir -p data/dqe/dqedb
+mkdir data/hdb
+mkdir data/wdbhdb</code></pre>
+
+        <h4>Clone down the repos</h4>
+        <p>
+            Clone down the <code class="inline">devops-TorQ</code> repo and rename:
+        <pre><code class="block">cd releases/Torq
+git clone <Url for devops-TorQ>
+mv devop-TorQ v4.1.1</code></pre>
+
+        Clone down the <code class="inline">devops-TorQ-FSP</code> repo and rename
+        <pre><code class="block">cd ../releases/Torq-FSP
+git clone <Url for devops-TorQ-FSP>
+mv devop-TorQ-FSP v1.11.0</code></pre>
+
+        <h4>Set up the releases/deploy directory</h4>
+        <pre><code class="block">cd ..
+mkdir deploy
+mkdir deploy/v4.1.1_v1.11.0
+cp -r TorQ/v4.1.1/* deploy/v4.1.1_v1.11.0
+cp -r Torq-FSP/v1.11.0/* deploy/v4.1.1_v1.11.0</code></pre>
+
+        <h4>Set up the symlink</h4>
+        <pre><code class="block">cd ..
+ln -s ~/devops/releases/deploy/v4.1.1_v1.11.0 ~/devops/deploy</code></pre>
+
+        <h4>Changes needed for homer</h4>
+        <p>
+            For running TorQ on homer, you will need to make changes to the
+            <code class="inline">setenv.sh</code> and <code class="inline">process.csv</code> files.
+            <br>
+            <br>
+            Changes to <code class="inline">setenv.sh</code>:
+
+        <ol>
+            <li>
+                Add the q command line to the file:
+                <pre><code class="block">export QCMD="taskset -c 0,1 q"</code></pre>
+            </li>
+            <li>
+                Change <code class="inline">KDBBASEPORT</code> to a value that is at least 50 away from any other in-use ports.
+                <br>
+                Use this to check for free ports:
+                <pre><code class="block">// This will check 50 ports before and after to see if x (8000) is free 
+{{@[{system "p ",string x};x;{show raze string x}]}'[x-50+til 101]}[8000];</code></pre>
+            </li>
+            <li>
+                Change <code class="inline">TORQDATAHOME</code> to point to the data directory:
+                <pre><code class="block">export TORQDATAHOME=${TORQHOME}/deploy/data</code></pre>
+            </li>
+        </ol>
+
+        Changes to <code class="inline">process.csv</code>:
+
+        Remove the <code class="inline">q</code> at the end of each line in <code class="inline">deploy/appconfig/process.csv</code>
+        </p>
+
+        <h4>Try starting up the stack</h4>
+        <pre><code class="block">cd ~/devops/deploy
+source setenv.sh
+./torq.sh start all</code></pre>
+        <p></p>
+    </div>
+
+    <div class="content-div">
+        <h3>Development</h3>
+        <h4>File Structure</h4>
+        <p>
+            The file structure of your development stack can be more simple:
+        <pre><code class="block">.
+├── deploy
+├── devops-TorQ
+└── devops-TorQ-FSP</code></pre>
+        <h4>Make the directories</h4>
+        <p>
+        <pre><code class="block">mkdir devops
+cd devops
+mkdir deploy</code></pre>
+
+        <h4>Clone down the repos</h4>
+        <p>
+            Clone down the <code class="inline">devops-TorQ</code> repo and rename:
+        <pre><code class="block">cd releases/Torq
+git clone <Url for devops-TorQ>
+mv devop-TorQ v4.1.1</code></pre>
+
+        Clone down the <code class="inline">devops-TorQ-FSP</code> repo and rename
+        <pre><code class="block">cd ../releases/Torq-FSP
+git clone <Url for devops-TorQ-FSP>
+mv devop-TorQ-FSP v1.11.0</code></pre>
+
+        <h4>Set up the deploy directory</h4>
+        <p>
+            Copy the contents to deploy, starting first with <code class="inline">devops-TorQ</code>,
+            then <code class="inline">devops-TorQ-FSP</code>.
+        <pre><code class="block">cp -r devops-Torq/* deploy/
+cp -r devops-torq-fsp/* deploy</code></pre>
+        </p>
+
+        <h4>Changes needed for homer</h4>
+        <p>
+            Make the same changes as for production, except changing <code class="inline">TORQDATAHOME</code>
+            is not needed.
+        </p>
+
+    </div>
+    <script src="../js/common.js"></script>
+</body>

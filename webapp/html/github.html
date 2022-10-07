@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="../css/app.css">
+
+<body class="content-body">
+
+    <div class="content-div">
+        <h2>GitHub</h2>
+    </div>
+    
+    <div class="content-div">
+        <h3 id="contents-h">Contents</h3>
+        <div id="contents"></div>
+    </div>
+
+    <div class="content-div">
+        <h3>CODEOWNERS</h3>
+        
+        <p>
+            <code class="inline">CODEOWNERS</code> is a file, found in the root directory of the repository, which controls
+            who has access to push data to the repository.
+            <br>
+            <br>
+            This should include GitHub usernames the devops team members, as well as the devops managers.
+        </p>
+    </div>
+
+    <div class="content-div">
+        <h3>Templates</h3>
+        <p>
+            Templates are files used by GitHub to allow easier creating of issues and
+            pull requests.
+            <br>
+            <br>
+            Templates can be added in the <code class="inline">.github</code> directory of the repository.
+            <br>
+            <br>
+            These should include:
+            <ul>
+                <li>Sections to describe the issue or pull request.</li>
+                <li>Check boxes to show that assignees have been added.</li>
+                <li>Check boxes to show that labels have been added</li>
+            </ul>
+        </p>
+    </div>
+
+    <div class="content-div">
+        <h3>Creating an issue on GitHub</h3>
+        <p>
+            Open the page to the repo that you want to add the issue to. In most cases
+            this will be the DevOps torq repo. If the code is getting added to FSP then
+            add the issue to that repo.
+            <br>
+            <br>
+            On this page click on the issues tab, then click the new issue button
+        </p>
+        <img src="../assets/createNewIssue.png" alt="Blank issue page on GitHub">
+        <p>
+            Here you can fill in a sensible title, description, assign someone and give
+            the issue a label. The title should explain what the issue is or can be the
+            title of the question that has been asked. If it is a question, then the
+            question can be copied from the DevOps slack chat. The description box supports
+            markdown. In assignees, you can assign yourself or another member of your team.
+            Try to only asssing multiple team members to difficult issues. Add a label to
+            the issue so that at a glance it is easier to see what each issue is.
+            <br>
+            <br>
+            The project and milestone fields don't need to be filled in, though if the issue is
+            part of a project then adding this will make it easier to track.
+        </p>
+        <img src="../assets/newIssue.png" alt="Example of filled in issue page on GitHub">
+        <p>
+            After this is all filled in, click on the submit new issue button to create it.
+        </p>
+    </div>
+
+    <div class="content-div">
+        <h3>Creating a Pull Request</h3>
+        <p>
+            After you have pushed your code to a new branch, you can open a PR(Pull request)
+            on that code. The code doesn't need to be in a finished state to open a PR and
+            it is better to open one early. This is so that the code reviewers can see how
+            the code is progresing and help redirect you if the code is not going to work
+            as you think it will.
+            <br>
+            <br>
+            There are multiple ways to then open the PR. If your commit was the last one,
+            then on the code tab of the repo, you will see a message about your last commit
+            and at the end of it will be a button to open a new PR. Another way is to click
+            on the branches tab and then click open PR beside your branch.
+            <br>
+            <br>
+            This will open a screen as seen above. Here you have to put in a short description
+            of what this PR will change in the repo. Will also need to add assigness and a
+            label. If using a <code class="inline">CODEOWNERS</code> file, like DevOps does, then the reriviewers
+            will be added automatically. If not, then you will need to add them too.
+        </p>
+    </div>
+
+    <script src="../js/common.js"></script>
+</body>
